@@ -26,18 +26,22 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+    private fun ingresarSaldo() {
+        saldo += binding.textMonto.text.toString().toInt()
+        crearMensaje("Su saldo ha sido incrementado")
+        limpiarMonto()
 
+    }
     private fun retirarSaldo() {
-       val montogiro = binding.textMonto.toString().toInt()
-        if (montogiro <= saldo)
+       val montoGiro = binding.textMonto.text.toString().toInt()
+        if (montoGiro <= saldo)
         {
-            saldo -= montogiro
+            saldo -= montoGiro
             limpiarMonto()
-
-            Toast.makeText(applicationContext,"El retiro ha sido realizado correctamente"+saldo, Toast.LENGTH_LONG).show()
+            crearMensaje("El retiro ha sido realizado correctamente")
 
         } else  {
-            Toast.makeText(applicationContext,"El retiro ha sido realizado correctamente"+saldo, Toast.LENGTH_LONG).show()
+            crearMensaje("El retiro no ha sido realizado , saldo Insuficiente")
         }
           }
 
@@ -45,9 +49,8 @@ class MainActivity : AppCompatActivity() {
         binding.textMonto.text.clear()
     }
 
-    private fun ingresarSaldo() {
-        saldo += binding.textMonto.text.toString().toInt()
-        Toast.makeText(applicationContext,"Su saldo ha sido incrementado"+saldo, Toast.LENGTH_LONG).show()
 
+    fun crearMensaje(texto: String ){
+        Toast.makeText(applicationContext,texto, Toast.LENGTH_LONG).show()
     }
 }
